@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import axios from 'axios'
+import { useNavigate } from "react-router-dom";
 
 export default function Register() {
 
@@ -9,6 +10,8 @@ export default function Register() {
         password: '',
         profilePicture: '',
     })
+
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
