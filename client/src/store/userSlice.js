@@ -18,7 +18,10 @@ export const fetchUserByToken = createAsyncThunk(
     async (_, { rejectWithValue }) => {
         try {
             const token = localStorage.getItem('token');
-            if (!token) throw new Error('Token bulunamadı.');
+            if (!token) {
+                console.log('Token bulunamadı');
+                throw new Error('Token bulunamadı.');
+            }
 
             const response = await axios.get('http://localhost:5000/api/auth/me', {
                 headers: { Authorization: `Bearer ${token}` },

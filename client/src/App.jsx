@@ -13,7 +13,7 @@ function App() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(fetchUserByToken())
+        dispatch(fetchUserByToken());
     }, [dispatch]);
 
   return (

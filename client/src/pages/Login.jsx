@@ -15,11 +15,15 @@ export default function Login() {
         setFormData({...formData, [e.target.name] : e.target.value})
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        dispatch(loginUser(formData));
-        toast.success('Login Successfully!');
-        navigate('/')
+        try{
+            const resultAction = await dispatch(loginUser(formData)).unwrap()
+            toast.success(`Welcome, ${resultAction.user.username}!`);
+            navigate('/');
+        }catch (err) {
+            toast.error(err);
+        }
     }
 
     return (
