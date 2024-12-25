@@ -2,6 +2,7 @@ const express = require('express');
 const { connectDB, sequelize } = require('./src/config/database')
 const cors = require('cors');
 const authRoutes = require('./src/routes/authRoutes')
+const postRoutes = require('./src/routes/postRoutes');
 require('dotenv').config()
 
 const app = express();
@@ -15,5 +16,6 @@ connectDB();
 
 // Routes
 app.use('/api/auth', authRoutes)
+app.use('/api/posts', postRoutes)
 
 app.listen(PORT, () => console.log(`🚀 Sunucu çalışıyor: http://localhost:${PORT}`));
